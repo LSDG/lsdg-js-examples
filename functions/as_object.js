@@ -19,12 +19,9 @@ function sortsBefore(item1, item2)
 
 function quickSort(array, compare)
 {
-    if(array.length == 0)
-    {
-        return [];
-    }
+    if(array.length === 0) return [];
 
-    console.group && console.group("quickSort(", array, ")");
+    if(console.group) console.group("quickSort(", array, ")");
     console.log("Sorting with function ", compare.name);
 
     var left = [];
@@ -45,7 +42,7 @@ function quickSort(array, compare)
 
     var sorted = quickSort(left, compare).concat(pivot, quickSort(right, compare));
 
-    console.groupEnd && console.groupEnd();
+    if(console.groupEnd) console.groupEnd();
 
     return sorted;
 }
