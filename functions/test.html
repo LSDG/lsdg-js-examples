@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>LSDG JavaScript Examples - Functions</title>
+	<style></style>
+
+	<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js">
+	{
+		startOpened: true
+	}
+	</script>
+
+	<script>
+		window.onload = function()
+		{
+			var group = console.groupCollapsed || console.group;
+			var groupEnd = console.groupEnd;
+			var inGroup = false;
+
+			var filesToLoad = [
+				'definition.js',
+				'definition-vs-var.js',
+				'anonymous-vs-named.js',
+
+				'as_object.js',
+
+				'constructor.js',
+				'prototype.js',
+				'inheritance.js',
+
+				'scope.js',
+				'this.js',
+				'anonymous-wrapper.js',
+			];
+
+			function loadNext()
+			{
+				// If we're in a log message group, end it.
+				if(inGroup)
+				{
+					groupEnd();
+					inGroup = false;
+				}
+
+				// Get and remove the first filename from the list.
+				var filename = filesToLoad.shift();
+				if(!filename)
+				{
+					return;
+				}
+
+				// Start a new log message group.
+				group(filename);
+				inGroup = true;
+
+				// Create a new <script> tag and attach it to <head>.
+				var scriptElem = document.createElement('script');
+				scriptElem.onload = loadNext;
+				scriptElem.setAttribute("onload", "loadNext()");
+				scriptElem.setAttribute("src", filename);
+				document.getElementsByTagName("head")[0].appendChild(scriptElem);
+			}
+
+			// Attach to 'window' so this can be called from the "onload".
+			window.loadNext = loadNext;
+
+			// Start loading the JS files.
+			loadNext();
+		}
+	</script>
+</head>
+
+<body>
+<h1>Check the JavaScript console &darr;</h1>
+</body>
+</html>
