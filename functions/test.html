@@ -3,7 +3,6 @@
 <head>
 	<meta charset="utf-8" />
 	<title>LSDG JavaScript Examples - Functions</title>
-	<style></style>
 
 	<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js">
 	{
@@ -14,33 +13,24 @@
 	<script>
 		window.onload = function()
 		{
-			var group = console.groupCollapsed || console.group;
-			var groupEnd = console.groupEnd;
-			var inGroup = false;
+			var section = console.groupCollapsed || console.group || console.log;
+			var endSection = console.groupEnd || function(){};
+			var inSection = false;
 
 			var filesToLoad = [
 				'definition.js',
 				'definition-vs-var.js',
 				'anonymous-vs-named.js',
-
 				'as_object.js',
-
-				'constructor.js',
-				'prototype.js',
-				'inheritance.js',
-
-				'scope.js',
-				'this.js',
-				'anonymous-wrapper.js',
 			];
 
 			function loadNext()
 			{
-				// If we're in a log message group, end it.
-				if(inGroup)
+				// If we're in a log message section, end it.
+				if(inSection)
 				{
-					groupEnd();
-					inGroup = false;
+					endSection();
+					inSection = false;
 				}
 
 				// Get and remove the first filename from the list.
@@ -50,9 +40,9 @@
 					return;
 				}
 
-				// Start a new log message group.
-				group(filename);
-				inGroup = true;
+				// Start a new log message section.
+				section(filename);
+				inSection = true;
 
 				// Create a new <script> tag and attach it to <head>.
 				var scriptElem = document.createElement('script');
@@ -70,8 +60,10 @@
 		}
 	</script>
 </head>
-
 <body>
-<h1>Check the JavaScript console &darr;</h1>
+
+<h1>Functions</h1>
+<h3>Check the JavaScript console &darr;</h3>
+
 </body>
 </html>
