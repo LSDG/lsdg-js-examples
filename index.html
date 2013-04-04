@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>LSDG JavaScript Examples - Object Construction and Inheritance</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		body {
+			padding-bottom: 75%;
+		}
+		button.run {
+			margin-top: 5px;
+			margin-right: 5px;
+			float: right;
+		}
+	</style>
+
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="vendor/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="vendor/codemirror/css/codemirror.css" rel="stylesheet">
+
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="vendor/codemirror/js/codemirror-compressed.js"></script>
+
+	<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js">
+	{
+		startOpened: true
+	}
+	</script>
+
+	<script type="text/javascript" src="testpage.js">
+	[
+		"functions/definition.js",
+		"functions/definition-vs-var.js",
+		"functions/anonymous-vs-named.js",
+		"functions/as_object.js",
+		"construction-and-inheritance/constructor.js",
+		"construction-and-inheritance/prototype.js",
+		"construction-and-inheritance/inheritance.js"
+	]
+	</script>
+</head>
+
+<body>
+	<article class="container-fluid">
+
+		<h1>Object Construction and Inheritance</h1>
+		<h3>Check the JavaScript console &darr;</h3>
+
+		<div style="display: none;">
+			<div id="scriptDisplayTemplate" class="accordion"><div class="accordion-group">
+				<div class="accordion-heading">
+					<button type="button" class="btn btn-small btn-success run" data-idle-text="Run Again" data-running-text="Running...">
+						Run Script
+					</button>
+					<a class="accordion-toggle" href="#">script-filename.js</a>
+				</div>
+				<div class="accordion-body collapse in"><div class="accordion-inner"></div></div>
+			</div></div>
+		</div>
+
+	</article>
+</body>
+</html>
