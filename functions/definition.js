@@ -14,7 +14,7 @@ function functionDefinition(value)
 var functionExpression = function(value)
 {
     console.log("functionExpression (value: %s)", value);
-}
+};
 
 
 // An anonymous function expression, returned from a factory function
@@ -23,7 +23,7 @@ function createFunction(value1)
     return function(value2)
     {
         console.log("Function expression created by createFunction (value1: %s; value2: %s)", value1, value2);
-    }
+    };
 }
 
 
