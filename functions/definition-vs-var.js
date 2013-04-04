@@ -30,7 +30,8 @@ try
 }
 catch(error)
 {
-    console.error(error.stack);
+    console.error('Expected error "' + error.message + '":');
+    console.log(error.stack);
     // TypeError: undefined is not a function
     //     at Object.<anonymous> (.../lsdg-js-examples/functions/definition-vs-var.js:29:5)
 }
@@ -40,7 +41,7 @@ catch(error)
 someFunc = function()
 {
     console.log("someFunc expression");
-}
+};
 
 // Displays "someFunc expression"
 someFunc();
