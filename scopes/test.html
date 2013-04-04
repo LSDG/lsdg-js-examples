@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>LSDG JavaScript Examples - Scopes</title>
+
+	<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js">
+	{
+		startOpened: true
+	}
+	</script>
+
+	<script>
+		window.onload = function()
+		{
+			var section = console.groupCollapsed || console.group || console.log;
+			var endSection = console.groupEnd || function(){};
+			var inSection = false;
+
+			var filesToLoad = [
+				'scope.js',
+				'this.js',
+				'anonymous-wrapper.js',
+			];
+
+			function loadNext()
+			{
+				// If we're in a log message section, end it.
+				if(inSection)
+				{
+					endSection();
+					inSection = false;
+				}
+
+				// Get and remove the first filename from the list.
+				var filename = filesToLoad.shift();
+				if(!filename)
+				{
+					return;
+				}
+
+				// Start a new log message section.
+				section(filename);
+				inSection = true;
+
+				// Create a new <script> tag and attach it to <head>.
+				var scriptElem = document.createElement('script');
+				scriptElem.onload = loadNext;
+				scriptElem.setAttribute("onload", "loadNext()");
+				scriptElem.setAttribute("src", filename);
+				document.getElementsByTagName("head")[0].appendChild(scriptElem);
+			}
+
+			// Attach to 'window' so this can be called from the "onload".
+			window.loadNext = loadNext;
+
+			// Start loading the JS files.
+			loadNext();
+		}
+	</script>
+</head>
+<body>
+
+<h1>Scopes</h1>
+<h3>Check the JavaScript console &darr;</h3>
+
+</body>
+</html>
